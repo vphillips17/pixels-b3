@@ -22,22 +22,22 @@ function draw(){
             b = pixels[index + 2];
             a = pixels[index + 3];
             
-            pixels[index] = r*2;
-            pixels[index + 1] = g*2;
-            pixels[index + 2] = b*2;
-            pixels[index + 3] = a;
-            
-            pixels[index] = r;
-            pixels[index + 1] = b;
-            pixels[index + 2] = b;
-            pixels[index + 3] = b;
             
             if(keyIsPressed){
                 if(key== "1"){
-                    gray_filter();
+                    gray_filter(index, g, a);
                 }
+                if(key== "2"){
+                    victor_one(index, r, g, b, a);
+                }
+                if(key== "3"){
+                    victor_two(index, r, g, b, a);
+                }
+                if(key== "4"){
+                    victor_three(index, r, g, b, a);
+                }
+                
             }
-            
             
         }
     }
@@ -45,9 +45,33 @@ function draw(){
     updatePixels();
 }
 
-function gray_filter(){
-    pixels[index] = 255 - r;
-            pixels[index + 1] = g;
-            pixels[index + 2] = b;
-            pixels[index + 3] = a;
+function gray_filter(index,g,a){
+    pixels[index] = g;
+    pixels[index + 1] = g;
+    pixels[index + 2] = g;
+    pixels[index + 3] = a;
 }
+
+function victor_one(index, r, g, b, a){
+    pixels[index] = r*2;
+    pixels[index + 1] = g*2;
+    pixels[index + 2] = b*2;
+    pixels[index + 3] = a;
+}
+
+function victor_two(index, r, g, b, a){
+    pixels[index] = 0;
+    pixels[index + 1] = g;
+    pixels[index + 2] = 0;
+    pixels[index + 3] = a;
+}
+
+function victor_three(index, r,g,b,a){
+     pixels[index] = r;
+    pixels[index + 1] = b;
+    pixels[index + 2] = g;
+    pixels[index + 3] = a;
+}
+
+
+
